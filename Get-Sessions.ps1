@@ -21,7 +21,9 @@ Function Get-Sessions {
             $Report.SessionName = $matches[2]
             $Report.ID = $matches[3]
             $Report.State = $matches[4]
-            $Report.IdleTime = $matches[5] -replace "\+"," Days, " -replace ":"," Hours and " -replace '$'," Minutes"
+            IF ($matches[5] -ne "none") {
+                $Report.IdleTime = $matches[5] -replace "\+"," Days, " -replace ":"," Hours and " -replace '$'," Minutes"
+            }
             $Report.LogonTime = $matches[6]
             $Report
         }
